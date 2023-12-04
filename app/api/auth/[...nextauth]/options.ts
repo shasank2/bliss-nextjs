@@ -37,7 +37,8 @@ export const options: NextAuthOptions = {
     ],
     pages:{
         signIn:'/signin',
-        // error:'/signin'
+        // error:'/signin',
+        signOut:'/'
     },
     callbacks:{
         session:async ({session, token, user}) =>{

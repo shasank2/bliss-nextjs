@@ -12,3 +12,9 @@ declare module 'next-auth'{
         } & DefaultSession['user']
     }
 }
+
+// declare module 'react-color-picker'{
+//     interface ColorPicker{
+//         value:any
+//     }
+// }

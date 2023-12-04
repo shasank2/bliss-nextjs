@@ -35,4 +35,22 @@ model User {
   password String @db.VarChar(255)
   posts   Post[]
   profile Profile?
+  Product Product[]
+}
+
+model Product {
+  id Int @id @default(autoincrement())
+  title String
+  description String?
+  category String
+  style String
+  store String
+  size String
+  inventory Int
+  color String
+  price Int
+  images String @db.Text
+  userId Int
+  User User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId])
 }
