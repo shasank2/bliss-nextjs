@@ -7,6 +7,14 @@ const config: Config = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    fontFamily: {
+      // 'serif': ['ui-serif', 'Archer Pro', 'Cinzel'],
+      // 'sans': ['ui-sans-serif', 'Montserrat Alternates'],
+      // 'sans': ['Graphik', 'sans-serif'],
+      // 'serif': ['Merriweather', 'serif'],
+      'sans': ['Montserrat Alternates', 'sans-serif'],
+      'serif': ['Cinzel', 'serif'],
+    },
     extend: {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

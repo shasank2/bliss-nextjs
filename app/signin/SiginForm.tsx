@@ -2,7 +2,6 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import axios from 'axios'
 import { signIn } from 'next-auth/react'
 
 type Props = {}
@@ -26,10 +25,12 @@ const SigninForm = (props: Props) => {
             console.log(error)
         }
     }
+
     return (
-        <div className='flex flex-col items-center justify-center min-h-screen py-2'>
+        <div className='flex flex-col items-center py-5'>
             <div className='p-10 rounded-lg shadow-lg flex flex-col'>
-                <h1 className='text-xl font-medium mb-4'>Sign In</h1>
+                <h1 className='text-2xl font-medium mb-4 text-center'>Sign In</h1>
+
                 <label htmlFor="" className='mb-2'>Email</label>
                 <input
                     type="text"
