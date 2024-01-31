@@ -2,9 +2,9 @@
 import React, { useState } from 'react'
 import { signIn, signOut, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
-import Size from '../components/AddProduct/Size'
-import Color from '../components/AddProduct/Color'
-import ImageUpload from '../components/AddProduct/ImageUpload'
+import Size from '../../components/AddProduct/Size'
+import Color from '../../components/AddProduct/Color'
+import ImageUpload from '../../components/AddProduct/ImageUpload'
 
 type Props = {}
 
@@ -125,9 +125,9 @@ const ProductForm = (props: Props) => {
                 </div>
                 <Color setFormData={setFormData} Color={formData.color} />
 
-                <div className="mb-4">
+                {/* <div className="mb-4">
                     <ImageUpload info={info} updateInfo={updateInfo} imageUrls={imageUrls} setImageUrls={setImageUrls} handleImageChange={handleImageChange} />
-                </div>
+                </div> */}
 
 
                 <div className="flex items-center justify-between">
