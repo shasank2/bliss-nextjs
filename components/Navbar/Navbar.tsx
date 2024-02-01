@@ -13,7 +13,7 @@ const Navbar = (props: Props) => {
   const { data } = useSession() // useSession is client sided function
 
   // const user = await getCurrentUser()
-  console.log(data)
+  // console.log(data)
   return (
     <>
       <Promobar />

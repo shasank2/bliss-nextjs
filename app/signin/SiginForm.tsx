@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { signIn } from 'next-auth/react'
+import FancyButton from '@/components/FancyButton'
 
 type Props = {}
 
@@ -28,32 +29,31 @@ const SigninForm = (props: Props) => {
 
     return (
         <div className='flex flex-col items-center py-5'>
-            <div className='p-10 rounded-lg shadow-lg flex flex-col'>
-                <h1 className='text-2xl font-medium mb-4 text-center'>Sign In</h1>
-
-                <label htmlFor="" className='mb-2'>Email</label>
+            <div className='p-10 flex flex-col gap-4 font-cinzel text-center text-xl'>
+                <h1 className='text-5xl font-medium font-cera-stencil mb-4'>Login</h1>
+                <h4 className='text-lg'>Enter your email and password</h4>
                 <input
                     type="text"
-                    className='p-2 border-gray-300 border-[1px] rounded-lg w-[300px] mb-4 focus:outline-none focus:border-gray-600 text-black'
+                    className='p-2 border-gray-400 border-[2px] w-[400px] mb-4 focus:outline-none text-lg focus:border-black text-black'
                     id='email'
                     value={user.email}
-                    placeholder='email'
+                    placeholder='Email'
                     onChange={(e) => setUser({ ...user, email: e.target.value })}
                 />
-                <label htmlFor="" className='mb-2'>Password</label>
                 <input
                     type="password"
-                    className='p-2 border-gray-300 border-[1px] rounded-lg w-[300px] mb-4 focus:outline-none focus:border-gray-600 text-black'
+                    className='p-2 border-gray-400 border-[2px] w-[400px] mb-4 focus:outline-none text-lg focus:border-black text-black'
                     id='password'
                     value={user.password}
-                    placeholder='password'
+                    placeholder='Password'
                     onChange={(e) => setUser({ ...user, password: e.target.value })}
                 />
-                <button onClick={Login} className='p-2 border bg-indigo-500 text-white border-gray-300 mt-2 mb-4 focus:outline-none focus:border-gray-600'>
+                <FancyButton variant='border-bottom' onClick={Login} className='border bg-[#8cd0e3] text-white text-xl '>
                     Login Now
-                </button>
-                <Link href='/signup' className='text-sm text-center mt-5 text-neutral-600'>Do not have an account</Link>
-                <Link href='/' className='text-center mt-2'>Home</Link>
+                </FancyButton>
+                <span className='text-lg'>
+                    Do not have an account? <Link href='/signup' className='mt-5 text-gray-600 hover:text-[#B497E3] '>Create One</Link>
+                </span>
             </div>
         </div>
     )

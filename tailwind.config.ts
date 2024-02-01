@@ -8,12 +8,9 @@ const config: Config = {
   ],
   theme: {
     fontFamily: {
-      // 'serif': ['ui-serif', 'Archer Pro', 'Cinzel'],
-      // 'sans': ['ui-sans-serif', 'Montserrat Alternates'],
-      // 'sans': ['Graphik', 'sans-serif'],
-      // 'serif': ['Merriweather', 'serif'],
-      'sans': ['Montserrat Alternates', 'sans-serif'],
-      'serif': ['Cinzel', 'serif'],
+      'archer' : ['Archer', 'sans-serif'],
+      'cinzel': ['Cinzel', 'serif'],
+      'cera-stencil': ['Cera Stencil Pro', 'sans-serif'],
     },
     extend: {
       backgroundImage: {
