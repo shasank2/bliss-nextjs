@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { signIn } from 'next-auth/react'
-import FancyButton from '@/components/FancyButton'
+import FancyButton from '@/components/shared/FancyButton'
 
 type Props = {}
 
@@ -28,7 +28,7 @@ const SigninForm = (props: Props) => {
     }
 
     return (
-        <div className='flex flex-col items-center py-5'>
+        <div className='flex flex-col items-center py-4'>
             <div className='p-10 flex flex-col gap-4 font-cinzel text-center text-xl'>
                 <h1 className='text-5xl font-medium font-cera-stencil mb-4'>Login</h1>
                 <h4 className='text-lg'>Enter your email and password</h4>
@@ -48,7 +48,7 @@ const SigninForm = (props: Props) => {
                     placeholder='Password'
                     onChange={(e) => setUser({ ...user, password: e.target.value })}
                 />
-                <FancyButton variant='border-bottom' onClick={Login} className='border bg-[#8cd0e3] text-white text-xl '>
+                <FancyButton  onClick={Login} className='border bg-[#8cd0e3] text-white text-xl '>
                     Login Now
                 </FancyButton>
                 <span className='text-lg'>

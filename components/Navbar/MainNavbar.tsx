@@ -43,10 +43,10 @@ const MainNavbar = (props: Props) => {
                         <div className="hidden sm:ml-20 sm:block">
                             <div className="flex space-x-4 font-archer text-xl text-stone-100 underline-offset-4">
                                 {/* <a href="#" className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Dashboard</a> */}
-                                <a href="#" className="hover:underline  hover:text-white block px-3 py-2">Dashboard</a>
-                                <a href="#" className="hover:underline  hover:text-white block px-3 py-2">Team</a>
-                                <a href="#" className="hover:underline  hover:text-white block px-3 py-2">Projects</a>
-                                <a href="#" className="hover:underline  hover:text-white block px-3 py-2">Calendar</a>
+                                <a href="all-products" className="hover:underline  hover:text-white block px-3 py-2">All Products</a>
+                                <a href="#" className="hover:underline  hover:text-white block px-3 py-2">Best Selling</a>
+                                <a href="#" className="hover:underline  hover:text-white block px-3 py-2">Sets & Kits</a>
+                                <a href="#" className="hover:underline  hover:text-white block px-3 py-2">Accessories</a>
                             </div>
                         </div>
                     </div>
@@ -85,10 +85,10 @@ const MainNavbar = (props: Props) => {
                     <div className="sm:hidden" id="mobile-menu">
                         <div className="space-y-1 px-2 pb-3 text-stone-100 underline-offset-4 font-archer text-xl">
                             {/* <a href="#" className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Dashboard</a> */}
-                            <a href="#" className="hover:underline  hover:text-white block px-3 py-2">Dashboard</a>
-                            <a href="#" className="hover:underline  hover:text-white block px-3 py-2">Team</a>
-                            <a href="#" className="hover:underline  hover:text-white block px-3 py-2">Projects</a>
-                            <a href="#" className="hover:underline  hover:text-white block px-3 py-2">Calendar</a>
+                            <a href="all-products" className="hover:underline  hover:text-white block px-3 py-2">All Products</a>
+                            <a href="#" className="hover:underline  hover:text-white block px-3 py-2">Best Selling</a>
+                            <a href="#" className="hover:underline  hover:text-white block px-3 py-2">Sets & Kits</a>
+                            <a href="#" className="hover:underline  hover:text-white block px-3 py-2">Accessories</a>
                         </div>
                     </div> : null
             }
