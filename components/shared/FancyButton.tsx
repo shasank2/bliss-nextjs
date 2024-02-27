@@ -3,7 +3,7 @@ import React, { ReactNode } from 'react'
 type Props = {
     className: string
     children: ReactNode
-    onClick: any
+    onClick?: any
     variant?: "shadow" | "double-shadow" | "border-bottom"
 
 }

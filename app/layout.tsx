@@ -4,6 +4,8 @@ import { Inter } from 'next/font/google'
 import Provider from '../components/Provider'
 import Navbar from '../components/Navbar/Navbar'
 
+import '@smastrom/react-rating/style.css'
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {

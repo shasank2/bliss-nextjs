@@ -12,10 +12,8 @@ type Props = {}
 
 const ProductImageCarousel = (props: Props) => {
     return (
-        <Carousel opts={{
-            
-        }}>
-            <CarouselContent>
+        <Carousel>
+            <CarouselContent className='cursor-pointer'>
                 <CarouselItem className='h-[24rem] min-w-[9rem] bg-blue-300'>A</CarouselItem>
                 <CarouselItem className='h-[24rem] min-w-[9rem] bg-green-300'>B</CarouselItem>
                 <CarouselItem className='h-[24rem] min-w-[9rem] bg-red-300'>C</CarouselItem>
