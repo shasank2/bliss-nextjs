@@ -35,27 +35,30 @@ export const options: NextAuthOptions = {
             }
         })
     ],
-    pages:{
-        signIn:'/signin',
+    pages: {
+        signIn: '/signin',
         // error:'/signin',
-        signOut:'/'
+        // signOut:'/'
     },
-    callbacks:{
-        session:async ({session, token, user}) =>{
+    callbacks: {
+        redirect: async ({ url, baseUrl }) => {
+            return 'http://localhost:3001';
+        },
+        session: async ({ session, token, user }) => {
             if (session?.user) {
                 session.user.id = token.uid;
             }
             return session
         },
-        jwt: async ({user,token}) =>{
-            if(user){
+        jwt: async ({ user, token }) => {
+            if (user) {
                 token.uid = user.id
             }
             return token
         }
     },
-    session:{
-        strategy:'jwt'
+    session: {
+        strategy: 'jwt'
     },
     secret: process.env.NEXTAUTH_SECRET,
     debug: process.env.NODE_ENV === 'development'

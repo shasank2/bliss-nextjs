@@ -1,10 +1,10 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { signIn, signOut, useSession } from 'next-auth/react'
-import { useRouter } from 'next/router'
+import { useSession } from 'next-auth/react'
 import Size from '../../components/AddProduct/Size'
 import Color from '../../components/AddProduct/Color'
 import ImageUpload from '../../components/AddProduct/ImageUpload'
+import { redirect } from 'next/navigation'
 import axios from 'axios'
 
 type Props = {}
@@ -12,7 +12,10 @@ type Props = {}
 const ProductForm = (props: Props) => {
     const { data } = useSession()
     const id = data?.user.id
-    // const router = useRouter()
+
+    if (!id){
+        redirect('/api/auth/signin?callbackUrl=/addproduct')
+    }
 
     const [info, updateinfo] = useState<any>()
     const [formData, setFormData] = useState({
@@ -65,6 +68,20 @@ const ProductForm = (props: Props) => {
         e.preventDefault()
         try {
             let res = await axios.post('/api/addproduct', formData)
+            // clear state
+            setFormData({
+                title: '',
+                description: '',
+                category: '',
+                style: '',
+                size: '',
+                inventory: 0,
+                color: '',
+                price: 0,
+                images: '',
+                userId: id,
+                store: ''
+            })
             console.log(res)
         } catch (error) {
             console.log(error)
@@ -114,7 +131,7 @@ const ProductForm = (props: Props) => {
                         <label className="block text-gray-700 text-sm font-bold mb-2" >
                             size
                         </label>
-                        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name='size' type="text" onChange={handleChange} value={formData.size} />
+                        <input disabled={true} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" name='size' type="text" onChange={handleChange} value={formData.size} />
                     </div>
 
                     <Size setFormData={setFormData} />

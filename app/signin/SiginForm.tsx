@@ -1,14 +1,20 @@
 'use client'
 import React, { useState } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { signIn } from 'next-auth/react'
+import { redirect } from 'next/navigation'
+import { signIn, useSession } from 'next-auth/react'
 import FancyButton from '@/components/shared/FancyButton'
 
 type Props = {}
 
 const SigninForm = (props: Props) => {
-    const router = useRouter()
+
+    const { data: session, status } = useSession()
+
+    if (status === "authenticated") {
+        redirect('/')
+    }
+
     const [user, setUser] = useState({
         email: '',
         password: ''
@@ -48,7 +54,7 @@ const SigninForm = (props: Props) => {
                     placeholder='Password'
                     onChange={(e) => setUser({ ...user, password: e.target.value })}
                 />
-                <FancyButton  onClick={Login} className='border bg-[#8cd0e3] text-white text-xl '>
+                <FancyButton onClick={Login} className='border bg-[#8cd0e3] text-white text-xl '>
                     Login Now
                 </FancyButton>
                 <span className='text-lg'>
