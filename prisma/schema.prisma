@@ -39,7 +39,7 @@ model User {
 }
 
 model Product {
-  id          Int     @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   title       String
   description String?
   category    String?
@@ -49,9 +49,11 @@ model Product {
   inventory   Int?
   color       String?
   price       Int?
-  images      String  @db.Text
+  images      String   @db.Text
   userId      Int
-  User        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  reviews     Review[]
+  User        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  Rating      Rating[]
 
   @@index([userId])
 }
@@ -60,4 +62,20 @@ model ProductSample {
   id     Int    @id @default(autoincrement())
   title  String
   images String @db.Text
+}
+
+model Review {
+  id        Int      @id @default(autoincrement())
+  text      String
+  createdAt DateTime @default(now())
+  Product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId Int
+}
+
+model Rating {
+  id        Int      @id @default(autoincrement())
+  rating    Decimal
+  createdAt DateTime @default(now())
+  Product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  productId Int
 }

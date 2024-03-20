@@ -5,6 +5,7 @@ import Provider from '../components/Provider'
 import Navbar from '../components/Navbar/Navbar'
 
 import '@smastrom/react-rating/style.css'
+import { Toaster } from '@/components/ui/toaster'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -32,6 +33,7 @@ export default function RootLayout({
           <Navbar />
           <div className='m-5'>
             {children}
+            <Toaster />
           </div>
         </Provider>
       </body>

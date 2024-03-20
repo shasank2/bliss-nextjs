@@ -6,14 +6,22 @@ import Color from '../../components/AddProduct/Color'
 import ImageUpload from '../../components/AddProduct/ImageUpload'
 import { redirect } from 'next/navigation'
 import axios from 'axios'
+import { useToast } from '@/components/ui/use-toast'
 
 type Props = {}
 
 const ProductForm = (props: Props) => {
-    const { data } = useSession()
-    const id = data?.user.id
+    const { data, status } = useSession()
+    const { toast } = useToast()
 
-    if (!id){
+    useEffect(() => {
+        if (data?.user?.id) {
+            setFormData((prev)=>({...prev,userId:data?.user?.id }))
+        }
+    }, [data?.user?.id])
+    
+
+    if (status === "unauthenticated") {
         redirect('/api/auth/signin?callbackUrl=/addproduct')
     }
 
@@ -25,10 +33,10 @@ const ProductForm = (props: Props) => {
         style: '',
         size: '',
         inventory: 0,
-        color: 'green',
+        color: '',
         price: 0,
         images: '',
-        userId: id,
+        userId: 1,
         store: ''
     })
 
@@ -51,7 +59,6 @@ const ProductForm = (props: Props) => {
 
     useEffect(() => {
         handleImageChange()
-        console.log(formData)
     }, [imageUrls])
 
     const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,7 +69,6 @@ const ProductForm = (props: Props) => {
             [e.target.name]: parseInt(e.target.value)
         })
     }
-
 
     const handleSubmitAddProduct = async (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
@@ -79,9 +85,11 @@ const ProductForm = (props: Props) => {
                 color: '',
                 price: 0,
                 images: '',
-                userId: id,
+                userId: data?.user?.id,
                 store: ''
             })
+            setImageUrls([])
+            toast({description: "Product Added Successfully", duration:5000})
             console.log(res)
         } catch (error) {
             console.log(error)
