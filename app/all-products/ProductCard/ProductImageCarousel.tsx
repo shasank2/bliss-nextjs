@@ -7,16 +7,25 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel"
+import Image from 'next/image'
 
-type Props = {}
+type Props = {
+    images: string
+}
 
 const ProductImageCarousel = (props: Props) => {
+    const { images } = props
+    
     return (
-        <Carousel>
+        <Carousel opts={{loop:true}}>
             <CarouselContent className='cursor-pointer'>
-                <CarouselItem className='h-[24rem] min-w-[9rem] bg-blue-300'>A</CarouselItem>
-                <CarouselItem className='h-[24rem] min-w-[9rem] bg-green-300'>B</CarouselItem>
-                <CarouselItem className='h-[24rem] min-w-[9rem] bg-red-300'>C</CarouselItem>
+                {JSON.parse(images || "")?.map((image: string, index: number) => {
+                    return (
+                        <CarouselItem key={index} className='h-[24rem] min-w-[9rem]'>
+                            <Image src={image} width={700} height={700} alt='asasdasd' />
+                        </CarouselItem>
+                    )
+                })}
             </CarouselContent>
             <CarouselPrevious variant={'default'} className='left-0 w-12 h-12  bg-transparent text-gray-700 hover:bg-slate-200/50 rounded-none [&>svg]:w-12 [&>svg]:h-12' />
             <CarouselNext variant={'default'} className='right-0 w-12 h-12  bg-transparent text-gray-700 hover:bg-slate-200/50 rounded-none [&>svg]:w-12 [&>svg]:h-12' />

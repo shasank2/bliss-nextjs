@@ -4,9 +4,15 @@ import ProductImageCarousel from './ProductImageCarousel'
 import { Rating } from '@smastrom/react-rating'
 import FancyButton from '@/components/shared/FancyButton'
 
-type Props = {}
+type Props = {
+    title: string
+    desc: string
+    price: number
+    images: string
+}
 
 const ProductCard = (props: Props) => {
+    const { title, desc, price, images } = props
 
     const customStyles = {
         itemShapes: StarSvg,
@@ -16,8 +22,8 @@ const ProductCard = (props: Props) => {
 
 
     return (
-        <div className='font-archer  flex flex-col items-center gap-2 group'>
-            <ProductImageCarousel />
+        <div className='font-archer  flex flex-col items-center gap-2 group max-w-sm'>
+            <ProductImageCarousel images={images} />
             <div className='flex gap-2 text-xl'>
                 <Rating
                     itemStyles={customStyles}
@@ -29,11 +35,11 @@ const ProductCard = (props: Props) => {
                 {/* 3 &#40;56&#41; */}
 
             </div>
-            <span className='text-2xl font-medium cursor-pointer'>Lemon Sage Body Butter</span>
-            <span className='text-xl text-gray-700'>$13.00 - $60.00</span>
-            <span className='text-xl italic text-gray-700'>Lemon & Sage Maximum Moisture Cream</span>
-            <div className='px-4 w-full'>
-            <FancyButton className={'border bg-[#8cd0e3] w-full text-2xl text-black font-semibold font-cera-stencil invisible group-hover:visible'}  onClick={()=>{}}>ADD TO BAG</FancyButton>
+            <span className='text-2xl font-medium cursor-pointer'>{title}</span>
+            <span className='text-xl text-gray-700'>${price.toFixed(2)}</span>
+            <span className='text-xl italic text-gray-700 mx-3 text-center'>{desc}</span>
+            <div className='w-full'>
+                <FancyButton className={'border bg-[#8cd0e3] w-full text-2xl text-black font-semibold font-cera-stencil invisible group-hover:visible'} onClick={() => { }}>ADD TO BAG</FancyButton>
             </div>
         </div>
     )
