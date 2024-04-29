@@ -3,6 +3,7 @@ import React, { Fragment, useEffect, useState } from 'react'
 import FilterAndSort from './FilterAndSort'
 import ProductCard from './ProductCard/ProductCard'
 import axios from 'axios'
+import Link from 'next/link'
 
 type Props = {}
 
@@ -29,9 +30,9 @@ const AllProducts = (props: Props) => {
             <div className='flex flex-wrap gap-32 justify-center'>
                 {productList.map((elem: any, index: number) => {
                     return (
-                        <Fragment key={index}>
+                        <Link href={`/products/${elem.id}`} key={index}>
                             <ProductCard title={elem.title} desc={elem.description} price={elem.price} images={elem.images}  />
-                        </Fragment>
+                        </Link>
                     )
                 })}
             </div>
