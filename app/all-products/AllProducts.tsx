@@ -33,6 +33,8 @@ const AllProducts = (props: Props) => {
                         <Link href={`/products/${elem.id}`} key={index}>
                             <ProductCard title={elem.title} desc={elem.description} price={elem.price} images={elem.images}  />
                         </Link>
+                        // <ProductCard title={elem.title} desc={elem.description} price={elem.price} images={elem.images}  />
+
                     )
                 })}
             </div>
