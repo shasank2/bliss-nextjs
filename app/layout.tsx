@@ -2,12 +2,11 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Provider from "../components/Provider";
-import Navbar from "../components/Navbar/Navbar";
-
 import "@smastrom/react-rating/style.css";
-import { Toaster } from "@/components/ui/toaster";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import HamburgerMenu from "@/components/Navbar/HamburgerMenu";
+
+import BaseLayout from "@/components/Layout/BaseLayout";
+import { SidebarContextProvider } from "@/context/sidebarContext";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -42,16 +41,11 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <Provider>
-          <SidebarProvider defaultOpen={false}>
-            <HamburgerMenu />
-            <main className="w-full">
-              <Navbar />
-              <div className="m-5">
-                {children}
-                <Toaster />
-              </div>
-            </main>
-          </SidebarProvider>
+          <SidebarContextProvider>
+            {/* <ErrorBoundary> */}
+              <BaseLayout>{children}</BaseLayout>
+            {/* </ErrorBoundary> */}
+          </SidebarContextProvider>
         </Provider>
       </body>
     </html>

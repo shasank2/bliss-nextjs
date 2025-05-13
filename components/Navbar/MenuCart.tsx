@@ -8,10 +8,11 @@ import {
 import { useSidebarContext } from "@/context/sidebarContext";
 
 type Props = {};
-const HamburgerMenu = (props: Props) => {
-  const { isHamburgerMenuOpen } = useSidebarContext();
+const MenuCart = (props: Props) => {
+  const { isMenuCartOpen } = useSidebarContext();
+
   return (
-    <Sidebar open={isHamburgerMenuOpen}>
+    <Sidebar side={"right"} open={isMenuCartOpen}>
       <SidebarHeader />
       <SidebarContent>
         <SidebarGroup />
@@ -21,4 +22,4 @@ const HamburgerMenu = (props: Props) => {
     </Sidebar>
   );
 };
-export default HamburgerMenu;
+export default MenuCart;

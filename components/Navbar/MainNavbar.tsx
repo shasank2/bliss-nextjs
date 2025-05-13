@@ -9,13 +9,14 @@ import { GrLogout } from "react-icons/gr";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { HiOutlineShoppingBag } from "react-icons/hi";
 import { IoSearch } from "react-icons/io5";
-import { useSidebar } from "../ui/sidebar";
 import NavbarSearch from "./NavbarSearch";
+import { useSidebarContext } from "@/context/sidebarContext";
 
 type Props = {};
 
 const MainNavbar = (props: Props) => {
-  const { toggleSidebar } = useSidebar();
+  const {isHamburgerMenuOpen, isMenuCartOpen, setIsHamburgerMenuOpen, setIsMenuCartOpen } = useSidebarContext();
+
   const [showSearch, setShowSearch] = useState<boolean>(false);
   const { data } = useSession(); // useSession is client sided function
 
@@ -27,7 +28,7 @@ const MainNavbar = (props: Props) => {
             <div className="flex items-center w-1/3 lg:w-auto">
               <button
                 type="button"
-                onClick={toggleSidebar}
+                onClick={() => setIsHamburgerMenuOpen(!isHamburgerMenuOpen)}
                 className="lg:hidden relative flex items-center justify-center rounded-md p-2 text-white"
                 aria-controls="mobile-menu"
                 aria-expanded="false"
@@ -111,7 +112,9 @@ const MainNavbar = (props: Props) => {
               <button>
                 <IoMdNotificationsOutline />
               </button>
-              <button>
+              <button
+                onClick={() => setIsMenuCartOpen(!isMenuCartOpen)}
+              >
                 <HiOutlineShoppingBag />
               </button>
               {data?.user ? (
