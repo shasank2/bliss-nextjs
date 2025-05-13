@@ -42,9 +42,9 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <Provider>
-          <SidebarProvider>
+          <SidebarProvider defaultOpen={false}>
             <HamburgerMenu />
-            <main>
+            <main className="w-full">
               <Navbar />
               <div className="m-5">
                 {children}
