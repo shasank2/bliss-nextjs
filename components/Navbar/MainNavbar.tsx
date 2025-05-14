@@ -15,7 +15,12 @@ import { useSidebarContext } from "@/context/sidebarContext";
 type Props = {};
 
 const MainNavbar = (props: Props) => {
-  const {isHamburgerMenuOpen, isMenuCartOpen, setIsHamburgerMenuOpen, setIsMenuCartOpen } = useSidebarContext();
+  const {
+    isHamburgerMenuOpen,
+    isMenuCartOpen,
+    setIsMenuCartOpen,
+    setIsHamburgerMenuOpen,
+  } = useSidebarContext();
 
   const [showSearch, setShowSearch] = useState<boolean>(false);
   const { data } = useSession(); // useSession is client sided function
@@ -29,18 +34,17 @@ const MainNavbar = (props: Props) => {
               <button
                 type="button"
                 onClick={() => setIsHamburgerMenuOpen(!isHamburgerMenuOpen)}
-                className="lg:hidden relative flex items-center justify-center rounded-md p-2 text-white"
+                className="lg:hidden relative flex items-center justify-center rounded-md p-3 text-white"
                 aria-controls="mobile-menu"
                 aria-expanded="false"
               >
                 <span className="absolute -inset-0.5"></span>
                 <span className="sr-only">Open main menu</span>
-
                 <svg
-                  className="block h-6 w-6"
+                  className="h-8 w-8 transition-transform duration-300 ease-in-out hover:scale-110 hover:rotate-6"
                   fill="none"
                   viewBox="0 0 24 24"
-                  strokeWidth="1.5"
+                  strokeWidth="2.5"
                   stroke="currentColor"
                   aria-hidden="true"
                 >
@@ -48,21 +52,6 @@ const MainNavbar = (props: Props) => {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                  />
-                </svg>
-
-                <svg
-                  className="hidden h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
                   />
                 </svg>
               </button>
@@ -107,26 +96,24 @@ const MainNavbar = (props: Props) => {
 
             <div className="flex justify-end items-center space-x-3 text-white text-3xl w-1/3 lg:w-auto">
               <button onClick={() => setShowSearch(!showSearch)}>
-                <IoSearch />
+                <IoSearch className="transition-transform duration-300 ease-in-out hover:scale-110 hover:text-white/80" />
               </button>
               <button>
-                <IoMdNotificationsOutline />
+                <IoMdNotificationsOutline className="transition-transform duration-300 ease-in-out hover:scale-110 hover:text-white/80" />
               </button>
-              <button
-                onClick={() => setIsMenuCartOpen(!isMenuCartOpen)}
-              >
-                <HiOutlineShoppingBag />
+              <button onClick={() => setIsMenuCartOpen(!isMenuCartOpen)}>
+                <HiOutlineShoppingBag className="transition-transform duration-300 ease-in-out hover:scale-110 hover:text-white/80" />
               </button>
               {data?.user ? (
                 <>
                   <button onClick={() => signOut()}>
-                    <GrLogout />
+                    <GrLogout className="transition-transform duration-300 ease-in-out hover:scale-110 hover:text-white/80" />
                   </button>
                   <div className="text-base pl-2">{data.user.name}</div>
                 </>
               ) : (
                 <button onClick={() => signIn()}>
-                  <LuUser />
+                  <LuUser className="transition-transform duration-300 ease-in-out hover:scale-110 hover:text-white/80" />
                 </button>
               )}
             </div>

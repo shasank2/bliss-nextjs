@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import HamburgerMenu from "../Navbar/HamburgerMenu";
 import MenuCart from "../Navbar/MenuCart";
 import Navbar from "../Navbar/Navbar";
@@ -11,8 +10,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-const BaseLayout = ({ children }: Props) => {
-
+const BaseLayout = ({ children }: Props) => {;
   return (
     <>
       <SidebarProvider defaultOpen={false}>

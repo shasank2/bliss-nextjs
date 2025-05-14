@@ -12,7 +12,7 @@ const MenuCart = (props: Props) => {
   const { isMenuCartOpen } = useSidebarContext();
 
   return (
-    <Sidebar side={"right"} open={isMenuCartOpen}>
+    <Sidebar side={"right"} open={isMenuCartOpen} >
       <SidebarHeader />
       <SidebarContent>
         <SidebarGroup />

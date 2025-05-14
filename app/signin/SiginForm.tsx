@@ -21,7 +21,6 @@ const SigninForm = (props: Props) => {
     })
 
     const Login = () => {
-        debugger
         try {
             signIn('credentials', {
                 email: user.email,

@@ -1,12 +1,12 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Provider from "../components/Provider";
 import "@smastrom/react-rating/style.css";
 
 import BaseLayout from "@/components/Layout/BaseLayout";
 import { SidebarContextProvider } from "@/context/sidebarContext";
 import ErrorBoundary from "@/components/ErrorBoundary";
+import SessionContext from "@/context/SessionContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -40,13 +40,13 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <Provider>
+        <SessionContext>
           <SidebarContextProvider>
             {/* <ErrorBoundary> */}
               <BaseLayout>{children}</BaseLayout>
             {/* </ErrorBoundary> */}
           </SidebarContextProvider>
-        </Provider>
+        </SessionContext>
       </body>
     </html>
   );
