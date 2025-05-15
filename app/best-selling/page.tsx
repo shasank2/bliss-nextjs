@@ -1,7 +1,7 @@
-type Props = {}
-const BestSelling = (props: Props) => {
-  return (
-    <div>BestSelling</div>
-  )
-}
-export default BestSelling
+import BestSelling from "./BestSelling";
+
+type Props = {};
+const page = (props: Props) => {
+  return <BestSelling />;
+};
+export default page;
