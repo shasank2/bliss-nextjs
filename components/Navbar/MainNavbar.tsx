@@ -11,6 +11,7 @@ import { HiOutlineShoppingBag } from "react-icons/hi";
 import { IoSearch } from "react-icons/io5";
 import NavbarSearch from "./NavbarSearch";
 import { useSidebarContext } from "@/context/sidebarContext";
+import NavigationDropdown from "./NavigationDropdown";
 
 type Props = {};
 
@@ -65,8 +66,7 @@ const MainNavbar = (props: Props) => {
               <span className="lg:hidden text-5xl font-bold font-cera-stencil text-stone-50">
                 bliss
               </span>
-
-              <div className="hidden lg:flex space-x-6 font-archer text-xl text-stone-100">
+              {/* <div className="hidden lg:flex space-x-6 font-archer text-xl text-stone-100">
                 <Link
                   href="/all-products"
                   className="hover:underline hover:text-white px-3 py-2"
@@ -91,6 +91,9 @@ const MainNavbar = (props: Props) => {
                 >
                   Accessories
                 </Link>
+              </div> */}
+              <div className="hidden lg:flex space-x-6 font-archer text-stone-100">
+                <NavigationDropdown />
               </div>
             </div>
 
