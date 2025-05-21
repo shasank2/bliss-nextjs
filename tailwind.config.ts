@@ -22,7 +22,11 @@ const config = {
         archer: ["Archer", "sans-serif"],
         cinzel: ["Cinzel", "serif"],
         "cera-stencil": ["Cera Stencil Pro", "sans-serif"],
-        orpheuspro: ["orpheuspro", "Montserrat", "sans-serif"]
+        orpheuspro: ["orpheuspro", "Montserrat", "sans-serif"],
+      },
+      backgroundImage: {
+        "purple-gradient":
+          "linear-gradient(270.11deg, #BBA6DD 0.1%, #EFBFE6 99.91%)",
       },
       colors: {
         border: "hsl(var(--border))",
