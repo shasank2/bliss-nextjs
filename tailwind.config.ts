@@ -22,6 +22,7 @@ const config = {
         archer: ["Archer", "sans-serif"],
         cinzel: ["Cinzel", "serif"],
         "cera-stencil": ["Cera Stencil Pro", "sans-serif"],
+        orpheuspro: ["orpheuspro", "Montserrat", "sans-serif"]
       },
       colors: {
         border: "hsl(var(--border))",
