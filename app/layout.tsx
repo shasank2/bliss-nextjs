@@ -4,9 +4,9 @@ import { Inter } from "next/font/google";
 import "@smastrom/react-rating/style.css";
 
 import BaseLayout from "@/components/Layout/BaseLayout";
-import { SidebarContextProvider } from "@/context/sidebarContext";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import SessionContext from "@/context/SessionContext";
+import { SidebarContextProvider } from "@/context/sidebar-context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -41,11 +41,9 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <SessionContext>
-          <SidebarContextProvider>
-            {/* <ErrorBoundary> */}
-              <BaseLayout>{children}</BaseLayout>
-            {/* </ErrorBoundary> */}
-          </SidebarContextProvider>
+          {/* <ErrorBoundary> */}
+          <BaseLayout>{children}</BaseLayout>
+          {/* </ErrorBoundary> */}
         </SessionContext>
       </body>
     </html>

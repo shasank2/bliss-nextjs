@@ -1,11 +1,3 @@
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarGroup,
-  SidebarHeader,
-} from "@/components/ui/sidebar";
-import { useSidebarContext } from "@/context/sidebarContext";
 import Link from "next/link";
 import { IoMdClose } from "react-icons/io";
 import {
@@ -14,23 +6,25 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "../ui/accordion";
+import { useSidebarContext } from "@/context/sidebar-context";
+import { Sheet, SheetContent } from "../ui/sheet";
 
 type Props = {};
 const HamburgerMenu = (props: Props) => {
-  const { isHamburgerMenuOpen, setIsHamburgerMenuOpen } = useSidebarContext();
+  const { setIsHamburgerMenuOpen, isHamburgerMenuOpen } = useSidebarContext();
   return (
-    <Sidebar open={isHamburgerMenuOpen}>
-      <SidebarHeader className="bg-[#8cd0e3] flex flex-row items-center justify-between px-5">
-        <span className=" text-6xl font-bold font-cera-stencil text-stone-50">
-          bliss
-        </span>
-        <IoMdClose
-          className="text-3xl cursor-pointer transition-transform duration-300 ease-in-out hover:rotate-90 hover:scale-110"
-          onClick={() => setIsHamburgerMenuOpen(false)}
-        />
-      </SidebarHeader>
-      <SidebarContent>
-        <SidebarGroup />
+    <Sheet open={isHamburgerMenuOpen} onOpenChange={setIsHamburgerMenuOpen}>
+      <SheetContent side={"left"} className="p-0">
+        <div className="flex justify-between items-center p-5 bg-[#8cd0e3]">
+          <span className="text-6xl font-bold font-cera-stencil text-stone-50">
+            bliss
+          </span>
+          <IoMdClose
+            className="text-3xl cursor-pointer transition-transform duration-300 ease-in-out hover:rotate-90 hover:scale-110"
+            onClick={() => setIsHamburgerMenuOpen(false)}
+          />
+        </div>
+
         <div className="px-4 pt-2 space-y-4 font-archer text-xl text-stone-800">
           {[
             { href: "/all-products", label: "All Products" },
@@ -76,10 +70,8 @@ const HamburgerMenu = (props: Props) => {
             )
           )}
         </div>
-        <SidebarGroup />
-      </SidebarContent>
-      <SidebarFooter />
-    </Sidebar>
+      </SheetContent>
+    </Sheet>
   );
 };
 export default HamburgerMenu;
