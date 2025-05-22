@@ -22,7 +22,7 @@ const ProductImageCarousel = (props: Props) => {
   const [count, setCount] = useState(0)
 
   let carouselItemsList = JSON.parse(images || "");
-console.log(api)
+// console.log(api)
   // useEffect(() => {
   //   if (!api) {
   //     return

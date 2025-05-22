@@ -3,30 +3,13 @@ import { IoIosLock, IoMdClose } from "react-icons/io";
 import { Sheet, SheetContent } from "../ui/sheet";
 import Image from "next/image";
 import FancyButton from "../shared/FancyButton";
+import { useCart } from "@/context/CartContext";
 
 type Props = {};
 
-const cartItems = [
-  {
-    id: 1,
-    name: "lemon & sage face wash",
-    size: "17 oz",
-    price: 23,
-    quantity: 55,
-    image: "/lemonsag.avif",
-  },
-  {
-    id: 2,
-    name: "cucumber face mask",
-    size: "10 oz",
-    price: 18,
-    quantity: 1,
-    image: "/cucumberFm.webp",
-  },
-];
-
 const MenuCart = (props: Props) => {
   const { setIsMenuCartOpen, isMenuCartOpen } = useSidebarContext();
+  const {cart} = useCart()
 
   return (
     <Sheet open={isMenuCartOpen} onOpenChange={setIsMenuCartOpen}>
@@ -39,11 +22,11 @@ const MenuCart = (props: Props) => {
           />
         </div>
         <div className="flex-1 overflow-y-auto">
-          {cartItems.map((item) => (
+          {cart.map((item) => (
             <CartItem
               key={item.id}
-              name={item.name}
-              size={item.size}
+              title={item.title}
+              // size={item.size}
               price={item.price}
               quantity={item.quantity}
               image={item.image}
@@ -70,25 +53,25 @@ const MenuCart = (props: Props) => {
 
 // CartItem Component
 const CartItem = ({
-  name,
-  size,
+  title,
+  // size,
   price,
   quantity,
   image,
 }: {
-  name: string;
-  size: string;
+  title: string;
+  // size: string;
   price: number;
   quantity: number;
   image: string;
 }) => {
   return (
     <div className="flex justify-between items-center p-4 border-b">
-      <Image src={image} width={120} height={120} alt={name} />
+      <Image src={image} width={120} height={120} alt={title} />
 
       <div className="flex flex-col justify-between h-full space-y-2">
-        <div className="font-archer capitalize">{name}</div>
-        <div className="text-gray-500">{size}</div>
+        <div className="font-archer capitalize">{title}</div>
+        <div className="text-gray-500">12 ml</div>
         <div className="font-semibold">${price}</div>
 
         <div className="flex border border-black overflow-hidden text-xs font-semibold w-[80px]">

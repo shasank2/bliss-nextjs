@@ -21,9 +21,10 @@ async function main() {
 
   console.log({ user });
 
-  const products = await prisma.product.createMany({
-    data: [
+  const products = await Promise.all(
+    [
       {
+        id: 5,
         title: "Lemon & Sage Body Butter",
         description: "Luxurious body butter with a zesty citrus scent.",
         category: "Body Care",
@@ -38,6 +39,7 @@ async function main() {
         userId: user.id,
       },
       {
+        id: 6,
         title: "Fab Foaming Exfoliating Cleanser",
         description: "2-in-1 cleanser and exfoliator with bamboo buffers.",
         category: "Skincare",
@@ -52,6 +54,7 @@ async function main() {
         userId: user.id,
       },
       {
+        id: 7,
         title: "Clear Genius Cleanser",
         description: "Clarifying gel cleanser for oily or acne-prone skin.",
         category: "Skincare",
@@ -66,6 +69,7 @@ async function main() {
         userId: user.id,
       },
       {
+        id: 8,
         title: "Drench & Quench Moisturizer",
         description: "Cream-to-water hydrator for all-day moisture.",
         category: "Skincare",
@@ -80,6 +84,7 @@ async function main() {
         userId: user.id,
       },
       {
+        id: 9,
         title:
           "Vitamin C + Tri-Peptide Collagen Protecting & Brightening Serum",
         description: "Serum designed to perfect and hydrate the skin.",
@@ -95,6 +100,7 @@ async function main() {
         userId: user.id,
       },
       {
+        id: 10,
         title: "Makeup Melt Wipes",
         description: "Oil-free makeup remover wipes.",
         category: "Skincare",
@@ -108,10 +114,59 @@ async function main() {
           '["https://res.cloudinary.com/dbwjunw0f/image/upload/v1747899556/Bliss_Rebranded_Incredi-Peel_Lifestyle1_nbaabz.webp","https://res.cloudinary.com/dbwjunw0f/image/upload/v1747899556/Bliss_Rebranded_Incredi-Peel_Lifestyle_2_ndap0e.webp"]',
         userId: user.id,
       },
+    ].map((product) =>
+      prisma.product.upsert({
+        where: { id: product.id },
+        update: {
+          title: product.title,
+          description: product.description,
+          category: product.category,
+          store: product.store,
+          size: product.size,
+          inventory: product.inventory,
+          color: product.color,
+          price: product.price,
+          images: product.images,
+        },
+        create: product,
+      })
+    )
+  );
+
+  console.log("Seed completed with beauty and cosmetic products");
+
+  await prisma.review.createMany({
+    data: [
+      {
+        text: "Amazing body butter! Smells great and super hydrating.",
+        productId: 5,
+      },
+      { text: "Really soft skin after use. Love it!", productId: 5 },
+      { text: "Scent is a bit strong, but does the job.", productId: 5 },
     ],
   });
 
-  console.log("Seed completed with beauty and cosmetic products");
+  await prisma.rating.createMany({
+    data: [
+      { rating: 4.8, productId: 5 },
+      { rating: 5.0, productId: 5 },
+      { rating: 4.0, productId: 5 },
+    ],
+  });
+
+  await prisma.review.createMany({
+    data: [
+      { text: "Perfect for oily skin. Cleans thoroughly.", productId: 6 },
+      { text: "Leaves skin soft and refreshed!", productId: 6 },
+    ],
+  });
+
+  await prisma.rating.createMany({
+    data: [
+      { rating: 4.5, productId: 6 },
+      { rating: 4.7, productId: 6 },
+    ],
+  });
 }
 
 main()

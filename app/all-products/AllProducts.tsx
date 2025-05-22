@@ -31,7 +31,7 @@ const AllProducts = (props: Props) => {
                 {productList.map((elem: any, index: number) => {
                     return (
                         <Link href={`/products/${elem.id}`} key={index}>
-                            <ProductCard title={elem.title} desc={elem.description} price={elem.price} images={elem.images}  />
+                            <ProductCard title={elem.title} desc={elem.description} price={elem.price} images={elem.images} productId={elem.id} stock={elem.inventory} />
                         </Link>
                         // <ProductCard title={elem.title} desc={elem.description} price={elem.price} images={elem.images}  />
 
