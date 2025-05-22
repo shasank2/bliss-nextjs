@@ -8,6 +8,9 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "prisma": {
+    "seed": "ts-node prisma/seed/index.ts"
+  },
   "dependencies": {
     "@prisma/client": "^5.18.0",
     "@radix-ui/react-accordion": "^1.2.10",

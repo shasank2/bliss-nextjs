@@ -6,7 +6,7 @@ import "@smastrom/react-rating/style.css";
 import BaseLayout from "@/components/Layout/BaseLayout";
 import ErrorBoundary from "@/components/ErrorBoundary";
 import SessionContext from "@/context/SessionContext";
-import { SidebarContextProvider } from "@/context/sidebar-context";
+import { CartProvider } from "@/context/CartContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -42,7 +42,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <SessionContext>
           {/* <ErrorBoundary> */}
-          <BaseLayout>{children}</BaseLayout>
+          <CartProvider>
+            <BaseLayout>{children}</BaseLayout>
+          </CartProvider>
           {/* </ErrorBoundary> */}
         </SessionContext>
       </body>
